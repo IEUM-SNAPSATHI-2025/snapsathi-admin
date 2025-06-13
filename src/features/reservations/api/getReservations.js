@@ -12,6 +12,9 @@ export default async function getReservations({ status, page = 1, limit = 6 }) {
 
   if (status === "confirmed") query = query.eq("status", "confirmed");
   else if (status === "unconfirmed") query = query.eq("status", "unconfirmed");
+  else {
+    query = query.or("status.eq.confirmed,status.eq.unconfirmed");
+  }
 
   const { data, error, count } = await query;
 
