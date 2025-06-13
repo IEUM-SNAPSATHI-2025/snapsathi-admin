@@ -47,6 +47,15 @@ export default function ReservationForm({ reservation, isEdit, onChange }) {
             disabled={!isEdit}
           />
         </FormField>
+        <FormField label="이메일" htmlFor="reservation-email">
+          <Input
+            id="reservation-email"
+            name="email"
+            value={reservation.email ?? ""}
+            onChange={(e) => onChange("email", e.target.value)}
+            disabled={!isEdit}
+          />
+        </FormField>
         <FormField label="이벤트 날짜" htmlFor="reservation-event-date">
           <Input
             id="reservation-event-date"
