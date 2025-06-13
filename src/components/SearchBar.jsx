@@ -1,3 +1,5 @@
+import searchIcon from "@assets/search.svg";
+
 export default function SearchBar({ inputValue, onChange }) {
   return (
     <>
@@ -12,7 +14,7 @@ export default function SearchBar({ inputValue, onChange }) {
           />
           <img
             className="absolute left-3 top-1/2 -translate-y-1/2 transform"
-            src="./src/assets/search.svg"
+            src={searchIcon}
             alt="검색하기"
           />
         </div>

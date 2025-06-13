@@ -1,3 +1,4 @@
+import meatballIcon from "@assets/meatball.svg";
 import { useEffect, useRef, useState } from "react";
 
 //TODO: 추후 재사용 가능하도록 리팩토링 예정
@@ -26,12 +27,7 @@ export default function MoreActionsDropdown({ onEdit, onDelete }) {
         onClick={() => setIsOpen((prev) => !prev)}
         className="p-2"
       >
-        <img
-          className="h-6 w-6"
-          src="./src/assets/meatball.svg"
-          alt=""
-          aria-hidden="true"
-        />
+        <img className="h-6 w-6" src={meatballIcon} alt="" aria-hidden="true" />
       </button>
 
       {/* 드롭다운 메뉴 */}

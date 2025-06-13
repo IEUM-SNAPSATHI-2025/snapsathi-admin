@@ -1,3 +1,5 @@
+import logoIcon from "@assets/simba.jpg";
+
 import { useNavigate } from "react-router-dom";
 import useUserStore from "../stores/useUserStore";
 
@@ -9,7 +11,7 @@ export default function Sidebar() {
     <div>
       <aside className="flex h-full flex-col items-start gap-8 bg-[#0E1B6B]">
         <header className="flex w-full shrink-0 items-center justify-center p-2 text-white">
-          <img src="./src/assets/logo.png"></img>
+          <img className="w-[200px]" src={logoIcon}></img>
         </header>
         <nav className="flex flex-col items-start justify-center gap-6 p-5 text-white">
           <button onClick={() => navigate("/reservation")}>예약 목록</button>
