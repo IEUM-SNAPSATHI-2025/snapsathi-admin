@@ -11,7 +11,7 @@ export default function ReservationPage() {
 
   return (
     <main className="flex flex-col gap-5 px-10 py-5">
-      <h1 className="text-[2rem] font-semibold text-black">예약 관리</h1>
+      <h1 className="text-[2rem] font-semibold text-black">예약 목록 관리</h1>
       <TabMenu
         tabs={TABS}
         selectedIndex={selectedIndex}

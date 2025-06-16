@@ -13,9 +13,8 @@ export default function useUpdateReservation({ closeModal, setIsEdit }) {
       if (data.status === "confirmed") {
         try {
           await sendApprovalEmail({
-            //TODO: 임시 테스트 메일. 도메인 구입 필요.
-            // email: data.email,
-            reservationId: data.id,
+            email: data.email,
+            reservationNumber: data.reservation_number,
           });
 
           alert("예약 승인 및 이메일 발송이 성공적으로 처리되었습니다.");

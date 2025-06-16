@@ -1,5 +1,5 @@
 import { useSignOut } from "../features/auth/hooks/useSignOut";
-export default function Header() {
+export default function Header({ title }) {
   const { mutate: signOut } = useSignOut();
 
   const handleSignOutClick = (e) => {
@@ -14,7 +14,7 @@ export default function Header() {
       <nav aria-label="현재 위치" className="flex flex-row items-center gap-2">
         <span>SNAPSATHI</span>
         <span>&gt;</span>
-        <span>예약 목록</span>
+        <span>{title}</span>
       </nav>
       <button type="button" onClick={handleSignOutClick}>
         로그아웃
