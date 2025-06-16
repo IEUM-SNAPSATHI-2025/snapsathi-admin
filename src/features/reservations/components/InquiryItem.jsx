@@ -1,3 +1,4 @@
+import { truncateText } from "@utils/truncateText";
 import { useNavigate } from "react-router-dom";
 
 export default function InquiryItem({ inquiry }) {
@@ -12,11 +13,11 @@ export default function InquiryItem({ inquiry }) {
           <div className="flex shrink-0 grow basis-0 items-center self-stretch">
             {inquiry.reservation_number}
           </div>
-          {/* <div className="flex shrink-0 grow basis-0 items-center self-stretch">
-            {inquiry.name}
-          </div> */}
           <div className="flex shrink-0 grow basis-0 items-center self-stretch">
-            {inquiry.message}
+            {inquiry.name}
+          </div>
+          <div className="flex shrink-0 grow basis-0 items-center self-stretch">
+            {truncateText(inquiry.message)}
           </div>
 
           <div className="flex shrink-0 grow basis-0 items-center self-stretch">
