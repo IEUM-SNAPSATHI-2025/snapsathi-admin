@@ -96,8 +96,8 @@ export default function InquiryDetailContent({
         <div className="flex flex-col gap-2">
           <h2 className="font-semibold">문의 내역</h2>
           <small>
-            작성일:
-            {new Date(reservation.created_at).toLocaleString("ko-KR", {
+            작성일:{" "}
+            {new Date(inquiry.created_at).toLocaleString("ko-KR", {
               timeZone: "Asia/Seoul",
               year: "numeric",
               month: "2-digit",
