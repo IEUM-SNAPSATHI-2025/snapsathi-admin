@@ -108,7 +108,9 @@ export default function InquiryDetailContent({
           </small>
 
           <div className="border-b border-gray-300 bg-white p-3 text-sm font-normal text-gray-900">
-            <p>{inquiry.message || "문의 내용이 없습니다."}</p>
+            <p className="w-full overflow-y-auto whitespace-pre-wrap break-all">
+              {inquiry.message || "문의 내용이 없습니다."}
+            </p>
           </div>
         </div>
         <ReservationForm
