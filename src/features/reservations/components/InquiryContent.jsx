@@ -63,7 +63,6 @@ export default function InquiryContent() {
   return (
     <section className="flex h-fit min-h-[43rem] w-full flex-col justify-between gap-4 rounded-xl bg-white px-8 py-6 text-black">
       <div className="flex flex-col gap-5">
-        <header className="text-lg font-medium">고객 문의</header>
         <SearchBar
           inputValue={searchKeyword}
           onChange={handleSearchInputChange}
@@ -71,7 +70,10 @@ export default function InquiryContent() {
         <div className="flex flex-col">
           <div className="flex w-full items-center gap-2 text-base font-medium text-gray-400">
             {Object.entries(titleItems).map(([key, title]) => (
-              <div key={key} className="shrink-0 grow basis-0">
+              <div
+                key={key}
+                className={`shrink-0 grow basis-0 ${key === "name" ? "hidden md:block" : ""}`}
+              >
                 {title}
               </div>
             ))}
