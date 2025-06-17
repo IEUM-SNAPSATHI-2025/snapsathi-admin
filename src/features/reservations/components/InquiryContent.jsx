@@ -93,7 +93,6 @@ export default function InquiryContent() {
           <div className="text-base font-normal text-[#415ac7]">
             총 요청 {count}건
           </div>
-          {/* //TODO: 예약 수정하고 탭 이동 시 에러 발생  */}
           <Pagination
             totalPages={totalPages}
             pageNumbers={pageNumbers}

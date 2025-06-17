@@ -24,7 +24,7 @@ export default function ReservationContent({ selectedTabLabel }) {
 
   useEffect(() => {
     setPage(1);
-  }, [searchKeyword]);
+  }, [searchKeyword, selectedTabLabel]);
 
   const {
     data: { data: reservationData = [], count = 0 } = {},
@@ -100,7 +100,6 @@ export default function ReservationContent({ selectedTabLabel }) {
           <div className="text-base font-normal text-[#415ac7]">
             총 예약 {count}건
           </div>
-          {/* //TODO: 예약 수정하고 탭 이동 시 에러 발생  */}
           <Pagination
             totalPages={totalPages}
             pageNumbers={pageNumbers}
