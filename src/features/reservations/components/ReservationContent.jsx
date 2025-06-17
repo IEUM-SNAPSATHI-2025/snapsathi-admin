@@ -1,8 +1,8 @@
 import Pagination from "@components/Pagination";
 import SearchBar from "@components/SearchBar";
+import useDebounce from "@hooks/useDebounce";
 import usePagination from "@hooks/usePagination";
-import useSearchFilter from "@hooks/useSearchFilter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PAGE_LIMIT } from "../constants/reservation";
 import useGetReservations from "../hooks/useGetReservations";
 import ReservationList from "./ReservationList";
@@ -23,6 +23,12 @@ export default function ReservationContent({
   selectedTabLabel,
 }) {
   const [page, setPage] = useState(1);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const debouncedKeyword = useDebounce(searchKeyword, 300);
+
+  useEffect(() => {
+    setPage(1);
+  }, [searchKeyword]);
 
   const {
     data: { data: reservationData = [], count = 0 } = {},
@@ -33,6 +39,7 @@ export default function ReservationContent({
     status: selectedTabLabel,
     page,
     limit: PAGE_LIMIT,
+    keyword: debouncedKeyword,
   });
 
   const {
@@ -49,11 +56,9 @@ export default function ReservationContent({
     setCurrentPage: setPage,
   });
 
-  const {
-    searchKeyword,
-    handleSearchInputChange,
-    filteredData: filteredReservationData,
-  } = useSearchFilter(reservationData);
+  const handleSearchInputChange = (e) => {
+    setSearchKeyword(e.target.value);
+  };
 
   if (isError) {
     return (
@@ -87,7 +92,7 @@ export default function ReservationContent({
           {isLoading ? (
             <div className="py-8 text-center">예약 목록을 불러오는 중…</div>
           ) : (
-            <ReservationList reservationData={filteredReservationData} />
+            <ReservationList reservationData={reservationData} />
           )}
         </div>
       </div>
