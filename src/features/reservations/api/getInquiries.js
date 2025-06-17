@@ -1,6 +1,6 @@
 import supabase from "@/supabase";
 
-export default async function getInquiries({ page = 1, limit = 6 }) {
+export default async function getInquiries({ page = 1, limit = 6, keyword }) {
   const from = (page - 1) * limit;
   const to = from + limit - 1;
 
@@ -8,8 +8,16 @@ export default async function getInquiries({ page = 1, limit = 6 }) {
     .from("reservation_inquiries")
     .select("*", { count: "exact" })
     .eq("status", "pending")
-    .order("created_at", { ascending: false })
-    .range(from, to);
+    .order("created_at", { ascending: false });
+
+  if (keyword && keyword.trim() !== "") {
+    const search = `%${keyword.trim()}%`;
+    query = query.or(
+      `name.ilike.${search},reservation_number.ilike.${search},message.ilike.${search}`,
+    );
+  }
+
+  query = query.range(from, to);
 
   const { data, error, count } = await query;
 
