@@ -15,7 +15,7 @@ export default function Button({
       onClick={onClick}
       type={type}
       aria-label={ariaLabel}
-      className={`flex h-12 w-48 items-center justify-center rounded-lg border-2 p-4 ${variantStyle}`}
+      className={`flex h-12 w-fit items-center justify-center rounded-lg border-2 px-8 md:w-48 ${variantStyle}`}
     >
       {children}
     </button>
