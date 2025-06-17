@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import InquiryDetailContent from "../components/InquiryDetailContent";
 import useGetInquiryById from "../hooks/useGetInquiryById";
 
-//TODO: 리팩토링 필요
 export default function ReservationInquiryDetailPage() {
   const { id } = useParams();
 
