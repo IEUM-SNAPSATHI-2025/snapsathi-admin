@@ -37,7 +37,7 @@ export default function ReservationModal() {
       modified_at: new Date().toISOString(),
       modified_by: user?.email || "unknown",
     };
-    updateMutation.mutate({ id, newFormData });
+    updateMutation.mutate({ id, newFormData, prevStatus: reservation.status });
   };
 
   const deleteMutation = useDeleteReservation({

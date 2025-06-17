@@ -7,20 +7,23 @@ export default function useUpdateReservation({ closeModal, setIsEdit }) {
 
   return useMutation({
     mutationFn: ({ id, newFormData }) => updateReservation({ id, newFormData }),
-    onSuccess: async (data) => {
+    onSuccess: async (data, variables) => {
       queryClient.invalidateQueries(["reservation", data.id]);
 
-      if (data.status === "confirmed") {
+      const statusChangedToConfirmed =
+        variables.prevStatus === "unconfirmed" && data.status === "confirmed";
+
+      if (statusChangedToConfirmed) {
         try {
           await sendApprovalEmail({
             email: data.email,
             reservationNumber: data.reservation_number,
           });
 
-          alert("예약 승인 및 이메일 발송이 성공적으로 처리되었습니다.");
+          alert("예약 수정 및 이메일 발송이 성공적으로 처리되었습니다.");
         } catch (error) {
           console.log(error);
-          alert("이메일 발송에 실패했습니다.");
+          alert("이메일 발송에 실패했습니다. 다시 시도해주세요.");
         }
       } else {
         alert("예약 정보가 성공적으로 수정되었습니다.");
@@ -30,7 +33,7 @@ export default function useUpdateReservation({ closeModal, setIsEdit }) {
       closeModal();
     },
     onError: (error) => {
-      alert("요청이 실패했습니다." + error.message);
+      alert("요청이 실패했습니다. 다시 시도해주세요." + error.message);
     },
   });
 }
