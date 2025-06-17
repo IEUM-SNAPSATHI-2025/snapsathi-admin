@@ -1,4 +1,5 @@
 import useModalStore from "@/stores/useModalStore";
+import { formatDate, formatDateWithTime } from "@utils/formatDate";
 
 export default function ReservationItem({ reservation }) {
   const { openModal } = useModalStore();
@@ -18,33 +19,24 @@ export default function ReservationItem({ reservation }) {
           <div className="flex shrink-0 grow basis-0 items-center self-stretch">
             {reservation.event_date}
           </div>
-          {/* 서비스 시간 */}
-          <div className="flex shrink-0 grow basis-0 items-center self-stretch">
-            {reservation.service_hours}
-          </div>
           {/* 서비스 장소 */}
           <div className="flex shrink-0 grow basis-0 items-center self-stretch">
             {reservation.location}
           </div>
-          {/* 번호 */}
-          <div className="flex shrink-0 grow basis-0 items-center self-stretch">
+          {/* 번호 - 태블릿&데스크탑 이상에서만 표시 */}
+          <div className="hidden shrink-0 grow basis-0 items-center self-stretch md:flex">
             {reservation.whatsapp}
           </div>
           {/* 예약 상태- 확약/미확약 */}
           <div className="flex shrink-0 grow basis-0 items-center self-stretch">
             {reservation.status}
           </div>
-          {/* 폼 생성 시간 */}
-          <div className="flex shrink-0 grow basis-0 items-center self-stretch">
-            {/* // TODO: 유틸 함수로 빼기 */}
-            {new Date(reservation.created_at).toLocaleString("ko-KR", {
-              timeZone: "Asia/Seoul",
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit",
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
+          {/* 날짜 - 모바일에서는 날짜만, 태블릿&데스크탑은 시간까지 */}
+          <div className="hidden shrink-0 grow basis-0 items-center self-stretch md:flex">
+            {formatDateWithTime(reservation.created_at)}
+          </div>
+          <div className="flex shrink-0 grow basis-0 items-center self-stretch md:hidden">
+            {formatDate(reservation.created_at)}
           </div>
         </div>
         <div className="h-[0.0625rem] w-full bg-gray-100"></div>

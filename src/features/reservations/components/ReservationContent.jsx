@@ -11,7 +11,6 @@ import ReservationModal from "./ReservationModal";
 const titleItems = {
   name: "예약자명",
   event_date: "이벤트 날짜",
-  service_hours: "서비스 시간",
   location: "서비스 장소",
   whatsapp: "번호", // TODO: 나중에 whatsapp이 아니라 phone_number로 바꿀 것
   status: "예약 상태",
@@ -81,7 +80,10 @@ export default function ReservationContent({ selectedTabLabel }) {
           <div className="flex flex-col">
             <div className="flex w-full items-center gap-2 text-base font-medium text-gray-400">
               {Object.entries(titleItems).map(([key, title]) => (
-                <div key={key} className="shrink-0 grow basis-0">
+                <div
+                  key={key}
+                  className={`shrink-0 grow basis-0 ${key === "whatsapp" ? "hidden md:block" : ""}`}
+                >
                   {title}
                 </div>
               ))}
