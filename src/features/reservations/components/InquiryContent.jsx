@@ -66,7 +66,7 @@ export default function InquiryContent() {
         inputValue={searchKeyword}
         onChange={handleSearchInputChange}
       />
-      <div className="flex h-fit min-h-[43rem] w-full flex-col justify-between gap-4 rounded-xl bg-white px-8 py-6 text-black">
+      <div className="flex h-fit min-h-[43rem] w-full flex-col justify-between gap-4 rounded-xl bg-white px-4 py-6 text-black md:px-8">
         <div className="flex flex-col gap-5">
           <div className="flex flex-col">
             <div className="flex w-full items-center gap-2 text-base font-medium text-gray-400">

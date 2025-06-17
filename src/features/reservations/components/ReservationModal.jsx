@@ -55,8 +55,8 @@ export default function ReservationModal() {
   return (
     <ModalPortal>
       <Backdrop />
-      <div className="fixed inset-0 z-50 flex items-center justify-center">
-        <div className="flex max-h-[80vh] w-[50vw] flex-col items-start overflow-y-auto rounded-lg bg-white p-8">
+      <div className="fixed inset-0 z-50 flex items-start justify-start lg:items-center lg:justify-center">
+        <div className="flex max-h-screen w-full flex-col items-start overflow-y-auto rounded-lg bg-white p-8 lg:max-h-[80vh] lg:w-[50vw]">
           <div className="flex w-full flex-col items-start gap-6">
             <main className="flex w-full flex-col gap-6">
               <header className="flex flex-row items-center justify-between text-xl font-medium text-black">

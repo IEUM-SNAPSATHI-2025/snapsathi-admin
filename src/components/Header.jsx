@@ -10,7 +10,7 @@ export default function Header({ title, onHamburgerClick }) {
   };
 
   return (
-    <header className="flex h-16 w-full shrink-0 items-center justify-between bg-white px-10">
+    <header className="flex h-16 w-full shrink-0 items-center justify-between bg-white px-5 md:px-10">
       {/* 햄버거 버튼 - 모바일 & 태블릿 */}
       <button
         type="button"

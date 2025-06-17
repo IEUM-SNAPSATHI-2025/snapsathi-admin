@@ -74,7 +74,7 @@ export default function ReservationContent({ selectedTabLabel }) {
         role="tabpanel"
         id={`tabpanel-${selectedTabLabel}`}
         aria-labelledby={`tab-${selectedTabLabel}`}
-        className="flex h-fit min-h-[43rem] w-full flex-col justify-between gap-4 rounded-xl bg-white px-8 py-6 text-black"
+        className="flex h-fit min-h-[43rem] w-full flex-col justify-between gap-4 rounded-xl bg-white px-4 py-6 text-black md:px-8"
       >
         <div className="flex flex-col gap-5">
           <div className="flex flex-col">
