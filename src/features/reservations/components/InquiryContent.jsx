@@ -1,8 +1,8 @@
 import Pagination from "@components/Pagination";
 import SearchBar from "@components/SearchBar";
+import useDebounce from "@hooks/useDebounce";
 import usePagination from "@hooks/usePagination";
-import useSearchFilter from "@hooks/useSearchFilter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InquiryList from "../components/InquiryList";
 import { PAGE_LIMIT } from "../constants/reservation";
 import useGetInquiries from "../hooks/useGetInquiries";
@@ -16,6 +16,12 @@ const titleItems = {
 
 export default function InquiryContent() {
   const [page, setPage] = useState(1);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const debouncedKeyword = useDebounce(searchKeyword, 300);
+
+  useEffect(() => {
+    setPage(1);
+  }, [searchKeyword]);
 
   const {
     data: { data: inquiryData = [], count = 0 } = {},
@@ -25,6 +31,7 @@ export default function InquiryContent() {
   } = useGetInquiries({
     page,
     limit: PAGE_LIMIT,
+    keyword: debouncedKeyword,
   });
 
   const {
@@ -41,11 +48,9 @@ export default function InquiryContent() {
     setCurrentPage: setPage,
   });
 
-  const {
-    searchKeyword,
-    handleSearchInputChange,
-    filteredData: filteredInquiryData,
-  } = useSearchFilter(inquiryData);
+  const handleSearchInputChange = (e) => {
+    setSearchKeyword(e.target.value);
+  };
 
   if (isError) {
     return (
@@ -76,7 +81,7 @@ export default function InquiryContent() {
               고객 문의 목록을 불러오는 중…
             </div>
           ) : (
-            <InquiryList inquiryData={filteredInquiryData} />
+            <InquiryList inquiryData={inquiryData} />
           )}
         </div>
       </div>
