@@ -22,18 +22,21 @@ export default function ReservationInquiryDetailPage() {
   }, [inquiry?.reservation_number]);
 
   return (
-    <main className="flex flex-col gap-5 px-10 py-5">
-      <h1 className="mb-4 text-2xl font-bold">
-        {/* {reservation.name ?? ""}님의 문의 */}
-        00님의 문의
-      </h1>
-      <InquiryDetailContent
-        id={id}
-        inquiry={inquiry}
-        reservationNumber={reservationNumber}
-        loadingRequest={loadingRequest}
-        errorRequest={errorRequest}
-      />
+    <main className="flex flex-col gap-5 px-5 py-5 md:px-10">
+      {inquiry && (
+        <>
+          <h1 className="mb-4 text-2xl font-bold">
+            {inquiry?.name ?? ""}님의 문의
+          </h1>
+          <InquiryDetailContent
+            id={id}
+            inquiry={inquiry}
+            reservationNumber={reservationNumber}
+            loadingRequest={loadingRequest}
+            errorRequest={errorRequest}
+          />
+        </>
+      )}
     </main>
   );
 }

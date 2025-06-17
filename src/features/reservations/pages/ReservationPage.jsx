@@ -10,7 +10,7 @@ export default function ReservationPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <main className="flex flex-col gap-5 px-10 py-5">
+    <main className="flex flex-col gap-5 px-5 py-5 md:px-10">
       <h1 className="text-[2rem] font-semibold text-black">예약 목록 관리</h1>
       <TabMenu
         tabs={TABS}
@@ -18,10 +18,7 @@ export default function ReservationPage() {
         onSelect={setSelectedIndex}
       />
 
-      <ReservationContent
-        selectedTabTitle={TABS[selectedIndex].title}
-        selectedTabLabel={TABS[selectedIndex].label}
-      />
+      <ReservationContent selectedTabLabel={TABS[selectedIndex].label} />
     </main>
   );
 }

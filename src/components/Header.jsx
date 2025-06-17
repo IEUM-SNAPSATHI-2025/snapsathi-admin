@@ -1,5 +1,5 @@
 import { useSignOut } from "../features/auth/hooks/useSignOut";
-export default function Header({ title }) {
+export default function Header({ title, onHamburgerClick }) {
   const { mutate: signOut } = useSignOut();
 
   const handleSignOutClick = (e) => {
@@ -10,8 +10,20 @@ export default function Header({ title }) {
   };
 
   return (
-    <header className="flex h-16 w-full shrink-0 items-center justify-between bg-white px-10">
-      <nav aria-label="현재 위치" className="flex flex-row items-center gap-2">
+    <header className="flex h-16 w-full shrink-0 items-center justify-between bg-white px-5 md:px-10">
+      {/* 햄버거 버튼 - 모바일 & 태블릿 */}
+      <button
+        type="button"
+        onClick={onHamburgerClick}
+        aria-label="Toggle sidebar"
+        className="text-2xl lg:hidden"
+      >
+        &#9776;
+      </button>
+      <nav
+        aria-label="현재 위치"
+        className="hidden flex-row items-center gap-2 lg:flex"
+      >
         <span>SNAPSATHI</span>
         <span>&gt;</span>
         <span>{title}</span>
