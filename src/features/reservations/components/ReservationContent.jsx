@@ -24,7 +24,7 @@ export default function ReservationContent({ selectedTabLabel }) {
 
   useEffect(() => {
     setPage(1);
-  }, [searchKeyword]);
+  }, [searchKeyword, selectedTabLabel]);
 
   const {
     data: { data: reservationData = [], count = 0 } = {},
