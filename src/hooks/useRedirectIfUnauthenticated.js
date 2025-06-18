@@ -1,9 +1,10 @@
 import supabase from "@/supabase";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function useRedirectIfUnauthenticated() {
   const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     async function checkAuth() {
@@ -13,8 +14,12 @@ export default function useRedirectIfUnauthenticated() {
 
       if (!session) {
         navigate("/signin", { replace: true });
+      } else {
+        setIsAuthenticated(true);
       }
     }
     checkAuth();
   }, [navigate]);
+
+  return { isAuthenticated };
 }
