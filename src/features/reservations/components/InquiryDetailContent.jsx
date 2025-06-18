@@ -34,24 +34,19 @@ export default function InquiryDetailContent({
 
   const updateInquiryStatus = useUpdateInquiryStatus();
   const handleConfirmInquiryClick = () => {
-    if (!inquiry?.id) return;
+    if (!inquiry?.id || !reservation.email || !reservationNumber) {
+      return;
+    }
     if (
       confirm("정말 문의를 종료하시겠어요?\n종료된 문의는 다시 열 수 없습니다.")
     ) {
-      updateInquiryStatus.mutate(
-        {
-          id: inquiry.id,
-          reviewed_at: new Date().toISOString(),
-          reviewed_by: user?.email || "unknown",
-          status: "completed",
-        },
-        {
-          onSuccess: () => {
-            alert("문의가 종료되었습니다.");
-            navigate("/inquiry");
-          },
-        },
-      );
+      updateInquiryStatus.mutate({
+        id: inquiry.id,
+        email: reservation.email,
+        reservationNumber: reservationNumber,
+        reviewed_at: new Date().toISOString(),
+        reviewed_by: user?.email || "unknown",
+      });
     }
   };
 
