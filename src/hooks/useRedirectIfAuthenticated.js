@@ -12,7 +12,7 @@ export default function useRedirectIfAuthenticated() {
       } = await supabase.auth.getSession();
 
       if (session) {
-        navigate("/reservation", { replace: true });
+        navigate("/", { replace: true });
       }
     }
 

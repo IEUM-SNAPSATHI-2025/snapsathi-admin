@@ -10,13 +10,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/reservation" element={<ReservationPage />} />
+          <Route path="/" element={<ReservationPage />} />
+          <Route path="/inquiry" element={<ReservationInquiryPage />} />
           <Route
-            path="/reservation-inquiry"
-            element={<ReservationInquiryPage />}
-          />
-          <Route
-            path="/reservation-inquiry/:id"
+            path="inquiry/:id"
             element={<ReservationInquiryDetailPage />}
           />
         </Route>

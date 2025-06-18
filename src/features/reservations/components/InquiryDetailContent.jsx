@@ -48,7 +48,7 @@ export default function InquiryDetailContent({
         {
           onSuccess: () => {
             alert("문의가 종료되었습니다.");
-            navigate("/reservation-inquiry");
+            navigate("/inquiry");
           },
         },
       );

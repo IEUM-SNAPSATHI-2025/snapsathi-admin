@@ -24,13 +24,13 @@ export default function Sidebar({ onClose }) {
           <div className="flex w-full flex-col items-start justify-start gap-3 pl-3">
             <button
               className="w-full p-1 text-start hover:bg-white/10"
-              onClick={() => handleNavigate("/reservation")}
+              onClick={() => handleNavigate("/")}
             >
               📋 예약 목록
             </button>
             <button
               className="w-full p-1 text-start hover:bg-white/10"
-              onClick={() => handleNavigate("/reservation-inquiry")}
+              onClick={() => handleNavigate("/inquiry")}
             >
               💬 고객 문의
             </button>

@@ -6,7 +6,7 @@ export default function InquiryItem({ inquiry }) {
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate(`/reservation-inquiry/${inquiry.id}`)}
+      onClick={() => navigate(`/inquiry/${inquiry.id}`)}
       className="flex w-full cursor-pointer flex-col items-center hover:bg-gray-50"
     >
       <div className="flex flex-col items-center gap-3 self-stretch pt-3">
