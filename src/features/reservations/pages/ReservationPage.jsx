@@ -1,13 +1,14 @@
+import TabMenu from "@components/Tab/TabMenu";
+import useRedirectIfUnauthenticated from "@hooks/useRedirectIfUnauthenticated";
 import { useState } from "react";
-import TabMenu from "../../../components/Tab/TabMenu";
-import useRedirectIfUnauthenticated from "../../../hooks/useRedirectIfUnauthenticated";
 import ReservationContent from "../components/ReservationContent";
 import { TABS } from "../constants/reservation";
 
 export default function ReservationPage() {
-  useRedirectIfUnauthenticated();
-
+  const { isAuthenticated } = useRedirectIfUnauthenticated();
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  if (!isAuthenticated) return null;
 
   return (
     <main className="flex flex-col gap-5 px-5 py-5 md:px-10">

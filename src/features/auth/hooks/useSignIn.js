@@ -11,7 +11,7 @@ export const useSignIn = () => {
     mutationFn: signIn,
     onSuccess: (data) => {
       setUser(data.user);
-      navigate("/reservation", { replace: true });
+      navigate("/", { replace: true });
     },
     onError: (error) => {
       alert("로그인 실패: " + error.message);

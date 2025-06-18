@@ -2,7 +2,9 @@ import useRedirectIfUnauthenticated from "@hooks/useRedirectIfUnauthenticated";
 import InquiryContent from "../components/InquiryContent";
 
 export default function ReservationInquiryPage() {
-  useRedirectIfUnauthenticated();
+  const { isAuthenticated } = useRedirectIfUnauthenticated();
+
+  if (!isAuthenticated) return null;
 
   return (
     <main className="flex flex-col gap-5 px-5 py-5 md:px-10">
